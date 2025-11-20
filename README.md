@@ -16,18 +16,3 @@ python -m http.server 8000
 
 и перейдите на `http://localhost:8000`.
 
-## Как задеплоить на Vercel
-1. Установите [Vercel CLI](https://vercel.com/docs/cli):
-
-```bash
-npm install -g vercel
-```
-
-2. Авторизуйтесь и разверните проект:
-
-```bash
-vercel
-vercel --prod
-```
-
-Конфигурация `vercel.json` настроит чистые ссылки, кеширование статичных `css`/`js` и редирект корня на `index.html`.
