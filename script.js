@@ -73,10 +73,38 @@ if (!prefersReduced && window.gsap) {
 
 // Soft parallax for orb
 const orb = document.querySelector('.orb');
-if (orb) {
+if (orb && !prefersReduced) {
+  let ticking = false;
+
   window.addEventListener('mousemove', (e) => {
-    const x = (e.clientX / window.innerWidth - 0.5) * 10;
-    const y = (e.clientY / window.innerHeight - 0.5) * 10;
-    orb.style.transform = `translate(${x}px, ${y}px)`;
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(() => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 10;
+      const y = (e.clientY / window.innerHeight - 0.5) * 10;
+      orb.style.transform = `translate(${x}px, ${y}px)`;
+      ticking = false;
+    });
+  });
+}
+
+const navToggle = document.querySelector('.nav-toggle');
+const nav = document.querySelector('.nav');
+
+if (navToggle && nav) {
+  navToggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
+  });
+
+  nav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (nav.classList.contains('is-open')) {
+        nav.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Открыть меню');
+      }
+    });
   });
 }

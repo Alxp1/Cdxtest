@@ -61,6 +61,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.25rem;
+  position: relative;
 }
 
 .logo {
@@ -80,6 +81,31 @@ body {
   display: inline-flex;
   gap: 1rem;
   font-weight: 500;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 0.55rem 0.65rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 999px;
+}
+
+.nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
 }
 
 .nav a {
@@ -609,7 +635,32 @@ main {
   }
 
   .nav {
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    right: 1rem;
+    width: min(340px, 86vw);
+    flex-direction: column;
+    background: rgba(8, 10, 18, 0.92);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 0.8rem;
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
     display: none;
+    z-index: 12;
+  }
+
+  .nav.is-open {
+    display: flex;
+  }
+
+  .nav a {
+    padding: 0.65rem 0.75rem;
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
   }
 }
 
