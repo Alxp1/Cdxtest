@@ -32,6 +32,37 @@ if (!prefersReduced && window.gsap) {
     });
   });
 
+  gsap.utils.toArray('.section__header').forEach((header) => {
+    const parts = header.querySelectorAll('.pill, h2, p');
+    gsap.from(parts, {
+      scrollTrigger: {
+        trigger: header,
+        start: 'top 85%'
+      },
+      y: 18,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.08,
+      ease: 'power2.out'
+    });
+  });
+
+  gsap.utils.toArray('.symptom-card').forEach((card, i) => {
+    const icon = card.querySelector('.icon');
+    gsap.from(icon, {
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 82%'
+      },
+      scale: 0.85,
+      opacity: 0,
+      rotate: -6,
+      duration: 0.8,
+      delay: i * 0.05,
+      ease: 'back.out(1.6)'
+    });
+  });
+
   gsap.to('.dial__needle', {
     rotate: 48,
     duration: 1.4,
