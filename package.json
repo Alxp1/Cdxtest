@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "description": "Современный лендинг о витамине D3.",
-  "scripts": {},
+  "scripts": {
+    "dev": "vercel dev",
+    "preview": "vercel deploy",
+    "deploy": "vercel deploy --prod"
+  },
   "engines": {
     "node": ">=18"
   }

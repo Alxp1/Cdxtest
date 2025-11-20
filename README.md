@@ -16,3 +16,12 @@ python -m http.server 8000
 
 и перейдите на `http://localhost:8000`.
 
+## Деплой на Vercel
+
+1. Установите CLI: `npm i -g vercel`.
+2. Авторизуйтесь: `vercel login`.
+3. Запустите предпросмотр: `npm run preview`.
+4. Продакшн: `npm run deploy`.
+
+Конфигурация `vercel.json` включает кэширование статических CSS/JS и чистые URL. Для локальной проверки используйте `npm run dev`.
+
